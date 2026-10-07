@@ -39,8 +39,8 @@
 
 .schedule-month{max-width:1408px;margin:0 auto 48px}.schedule-month-title{font-size:1.75rem;margin-bottom:22px}.events-section .event{grid-template-columns:85px minmax(0,1fr) 190px 220px}.events-section .event-note{font-size:14px;line-height:1.5}@media(max-width:1000px){.events-section .event{grid-template-columns:70px minmax(0,1fr) 190px}.events-section .event-note{grid-column:2}}@media(max-width:700px){.events-section .event{grid-template-columns:58px minmax(0,1fr)}.events-section h2{font-size:clamp(36px,8vw,52px)}.schedule-month-title{font-size:1.5rem}}
 
-.photo-gallery .heritage-photo{grid-column:1/-1}.photo-gallery .heritage-photo img{height:auto;aspect-ratio:auto;object-fit:contain;transform:translateX(20px)}
-@media(max-width:700px){.photo-gallery .heritage-photo img{transform:translateX(8px)}}
+/* Center the four people by trimming the extra background on the right. */
+.photo-gallery .heritage-photo{grid-column:1/-1}.photo-gallery .heritage-photo img{height:auto;aspect-ratio:1.35;object-fit:cover;object-position:left center;transform:none}
 
 .page-heading.photos-heading{max-width:1100px;margin:80px auto 90px;text-align:center}.photos-heading h1{line-height:1.18;letter-spacing:-1px}.photos-heading .eyebrow{margin-bottom:28px}
 @media(max-width:700px){.page-heading.photos-heading{margin:56px auto 64px}.photos-heading h1{font-size:clamp(40px,8vw,56px);line-height:1.2;letter-spacing:0}}
