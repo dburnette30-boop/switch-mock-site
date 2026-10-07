@@ -48,3 +48,6 @@
 .photo-gallery .stage-plot{grid-column:1/-1}.photo-gallery .stage-plot img{height:auto;aspect-ratio:auto;object-fit:contain}
 
 .photo-gallery .gallery-portrait img{height:auto;aspect-ratio:auto;object-fit:contain}
+
+/* Song List music icon, styled to match the shared navigation tiles. */
+nav .nav-song-list{gap:8px;white-space:nowrap}nav .nav-song-list svg{flex-shrink:0}
