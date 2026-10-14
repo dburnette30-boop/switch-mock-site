@@ -5,14 +5,60 @@
   <title>SWITCH featuring Ana · Brevard’s premier dance party band</title>
   <meta name="description" content="SWITCH featuring Ana — Brevard's premier dance party band. Meet the band, explore shows, and plan your next event.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+<style>
+/* Cinematic front page, using the band's own photograph. */
+.cinematic-home{--bg:#09080e;--surface:#131019;--gold:#d2b77e;background:var(--bg)}
+.cinematic-home .header{max-width:none;min-height:100px;background:#09080e;border:0;padding:22px 5%}
+.cinematic-home nav{gap:8px 16px}
+.cinematic-home nav>a{color:#e4d1fa}
+.cinematic-home .hero{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;display:flex;align-items:flex-end;min-height:clamp(700px,68vw,1000px);padding:0 6% 70px;gap:0}
+.cinematic-home .hero-photo{position:absolute;inset:0;z-index:-2;margin:0;padding:0;display:block;transform:none}
+.cinematic-home .hero-photo::before,.cinematic-home .hero-photo figcaption{display:none}
+.cinematic-home .hero-photo img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center top;filter:none}
+.cinematic-home .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(9,8,14,.08) 0%,rgba(9,8,14,0) 32%,rgba(9,8,14,.35) 56%,rgba(9,8,14,.93) 88%,#09080e 100%)}
+.cinematic-home .hero-copy{width:100%;max-width:1000px;padding:0;text-shadow:0 2px 20px #000}
+.cinematic-home .hero-copy .eyebrow{font-size:13px;letter-spacing:3px;color:#e4d1fa;margin:0 0 18px}
+.cinematic-home .hero-title{font:700 clamp(72px,10vw,150px)/.95 var(--sans);letter-spacing:clamp(3px,.8vw,12px);margin:0}
+.cinematic-home .hero-title span{display:block;font:italic 400 clamp(35px,4vw,62px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:12px}
+.cinematic-home .hero-copy .intro{font-size:clamp(19px,2.1vw,28px);margin:24px 0 10px}
+.cinematic-home .hero-description{max-width:620px;color:#e3dfe9;font-size:17px;margin:0 0 24px}
+.cinematic-home .hero-buttons{gap:24px}
+.cinematic-home .hero-buttons .button{background:transparent;color:#fff;border:0;border-bottom:1px solid #c9a2f5;min-height:44px;padding:7px 0;border-radius:0;font-size:16px;letter-spacing:.5px}
+.cinematic-home .hero-buttons .button:hover{color:#d8b7ff;text-decoration:none}
+.cinematic-home .ribbon{border:0;padding:22px 0;color:#c2b6cf}
+.cinematic-home .section{padding-top:90px;padding-bottom:90px}
+.cinematic-home .member img{filter:none}
+.cinematic-home .member>div{border:0}
+.cinematic-home .events-section{background:linear-gradient(135deg,#171020,#09080e 75%);color:#f7f5ef}
+.cinematic-home .events-section .eyebrow,.cinematic-home .events-section .text-link,.cinematic-home .date span{color:#d2b77e}
+.cinematic-home .event{border-color:#ffffff20}
+.cinematic-home .date{border-color:#ffffff20}
+.cinematic-home .venue p,.cinematic-home .event-note,.cinematic-home .schedule-note{color:#c2b6cf}
+.cinematic-home form{background:transparent;border:0;padding:0}
+.cinematic-home footer{border:0}
+@media(max-width:700px){
+.cinematic-home .header{padding:20px 6%;gap:20px}
+.cinematic-home nav{display:flex;gap:4px 10px}
+.cinematic-home .hero{min-height:0;padding:0 6% 48px;display:block}
+.cinematic-home .hero-photo{position:relative;inset:auto;margin:0 -6.82%;height:auto;z-index:0}
+.cinematic-home .hero-photo img{height:auto;width:100%;object-fit:contain}
+.cinematic-home .hero::after{display:none}
+.cinematic-home .hero-copy{position:relative;margin-top:-110px;padding-top:75px;background:linear-gradient(transparent,#09080e 110px);z-index:1}
+.cinematic-home .hero-title{font-size:clamp(60px,14vw,98px);letter-spacing:5px}
+.cinematic-home .hero-title span{font-size:38px}
+.cinematic-home .hero-copy .eyebrow{font-size:11px;letter-spacing:1.7px}
+.cinematic-home .hero-description{font-size:16px}
+.cinematic-home .section{padding-top:64px;padding-bottom:64px}
+}
+</style>
 </head>
-<body>
+<body class="cinematic-home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><a class="wordmark" href="index.html" aria-label="SWITCH featuring Ana home">SWITCH<span>featuring Ana</span></a><nav aria-label="Main navigation"><a href="index.html#band">The band</a><a href="band-bio.html">Band Bio</a><a href="videos.html">Videos</a><a href="photos.html">Photos</a><a href="song-list.html" class="nav-song-list"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></svg><span>Song List</span></a><a href="index.html#events">Events</a><a href="index.html#booking" class="nav-book">Book SWITCH</a></nav></header>
 <main id="main">
 <section class="hero" id="top">
-  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1>A night <br>to <em>remember.</em></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
-  <figure class="hero-photo"><img src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
+  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1 class="hero-title">SWITCH<span>featuring Ana</span></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
+  <figure class="hero-photo"><img fetchpriority="high" src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
 </section>
 <div class="ribbon" aria-label="Band name"><span>SWITCH featuring Ana</span><span>Music that moves you.</span><span>Let’s dance.</span></div>
 <section class="section band-section" id="band"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p>Four artists. One shared rhythm.</p></div>
