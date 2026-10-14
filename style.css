@@ -54,3 +54,27 @@ nav .nav-song-list{gap:8px;white-space:nowrap}nav .nav-song-list svg{flex-shrink
 
 /* Outline the booking link in the shared navigation. */
 nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .nav-book:hover{border-color:#e0c5ff}
+
+/* Pill-shaped navigation shared by desktop and mobile pages. */
+.header nav>a,.header nav .nav-book{
+  border:1px solid rgba(201,162,245,.65);
+  border-radius:999px;
+  padding:8px 16px;
+  background:transparent;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.header nav>a:hover,.header nav .nav-book:hover{
+  border-color:#e0c5ff;
+  background:rgba(201,162,245,.12);
+  text-decoration:none;
+}
+.header nav>a[aria-current="page"]{
+  background:rgba(201,162,245,.16);
+  border-color:#e0c5ff;
+  text-decoration:none;
+}
+@media(max-width:700px){
+  .header nav,.cinematic-home .header nav{gap:8px}
+  .header nav>a,.header nav .nav-book{padding:8px 14px;min-height:44px}
+}
