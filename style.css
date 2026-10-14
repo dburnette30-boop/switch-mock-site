@@ -51,3 +51,6 @@
 
 /* Song List music icon in the shared navigation. */
 nav .nav-song-list{gap:8px;white-space:nowrap}nav .nav-song-list svg{flex-shrink:0}
+
+/* Outline the booking link in the shared navigation. */
+nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .nav-book:hover{border-color:#e0c5ff}
