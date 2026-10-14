@@ -39,13 +39,13 @@
 @media(max-width:700px){
 .cinematic-home .header{padding:20px 6%;gap:20px}
 .cinematic-home nav{display:flex;gap:4px 10px}
-.cinematic-home .hero{min-height:0;padding:0 6% 48px;display:block}
-.cinematic-home .hero-photo{position:relative;inset:auto;margin:0 -6.82%;height:auto;z-index:0}
-.cinematic-home .hero-photo img{height:auto;width:100%;object-fit:contain}
-.cinematic-home .hero::after{display:none}
-.cinematic-home .hero-copy{position:relative;margin-top:-110px;padding-top:75px;background:linear-gradient(transparent,#09080e 110px);z-index:1}
+.cinematic-home .hero{min-height:calc(79.2vw + 170px);padding:38vw 6% 36px;display:flex;align-items:flex-end}
+.cinematic-home .hero-photo{position:absolute;inset:0 0 auto;margin:0;height:auto;z-index:-2}
+.cinematic-home .hero-photo img{height:auto;width:100%;object-fit:contain;object-position:center top}
+.cinematic-home .hero::after{display:block;background:linear-gradient(180deg,transparent 0%,rgba(9,8,14,.08) 22%,rgba(9,8,14,.60) 50%,#09080e 78%)}
+.cinematic-home .hero-copy{position:relative;margin:0;padding:0;background:transparent;z-index:1}
 .cinematic-home .hero-title{font-size:clamp(60px,14vw,98px);letter-spacing:5px}
-.cinematic-home .hero-title span{font-size:38px}
+.cinematic-home .hero-title span{font-size:clamp(30px,8vw,38px)}
 .cinematic-home .hero-copy .eyebrow{font-size:11px;letter-spacing:1.7px}
 .cinematic-home .hero-description{font-size:16px}
 .cinematic-home .section{padding-top:64px;padding-bottom:64px}
