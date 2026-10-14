@@ -56,6 +56,29 @@
 .events-background{position:absolute;inset:0;z-index:-1;pointer-events:none}
 .events-background::before{content:"";display:block;position:sticky;top:0;height:100vh;height:100svh;background:url("assets/events-background-sax.jpg") center center/cover no-repeat}
 .cinematic-home .events-section .venue p,.cinematic-home .events-section .event-note,.cinematic-home .events-section .schedule-note{color:#eee6f5}
+
+/* Stage lighting carries the concert atmosphere into booking. */
+.cinematic-home .booking-section{
+  position:relative;
+  max-width:none;
+  min-height:760px;
+  background:linear-gradient(90deg,rgba(9,8,14,.58),rgba(9,8,14,.18)),url("assets/events-background-sax.jpg") center bottom/cover no-repeat;
+  background-attachment:scroll;
+  color:#f7f5ef;
+}
+.cinematic-home .booking-copy{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.cinematic-home .booking-copy>p:not(.eyebrow){color:#eee6f5}
+.cinematic-home .booking-section form{
+  background:rgba(12,8,20,.76);
+  border:1px solid rgba(210,183,126,.32);
+  padding:32px;
+}
+.cinematic-home .booking-section input,.cinematic-home .booking-section textarea{background:rgba(9,8,14,.8)}
+.cinematic-home .booking-section .form-note{color:#d7cede}
+@media(max-width:700px){
+  .cinematic-home .booking-section{min-height:0;background-position:44% bottom;gap:36px}
+  .cinematic-home .booking-section form{padding:24px 20px}
+}
 </style>
 </head>
 <body class="cinematic-home">
