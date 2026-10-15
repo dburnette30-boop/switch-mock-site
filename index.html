@@ -172,6 +172,12 @@
   .cinematic-home .booking-copy>p:has(>a[href^="mailto:"]){position:absolute;top:0;left:6%;right:6%;max-width:none;margin:0;padding:12px 0;line-height:1.5}
   .cinematic-home .booking-copy .social{left:6%;right:6%;bottom:0;padding:12px 0}
 }
+
+/* Return Ana's email to the booking text inside the phone photo. */
+@media(max-width:700px){
+  .cinematic-home .booking-copy{padding-top:48px}
+  .cinematic-home .booking-copy>p:has(>a[href^="mailto:"]){position:static;top:auto;left:auto;right:auto;max-width:390px;margin:28px 0;padding:0}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
