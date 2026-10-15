@@ -14,3 +14,21 @@ if(document.body.classList.contains('cinematic-home')){
   window.addEventListener('pageshow',showHomeTop);
   showHomeTop();
 }
+
+/* iPad Safari can stop short when following the footer's body anchor. */
+if(document.body.classList.contains('cinematic-home')){
+  const tabletLayout=window.matchMedia('(min-width: 701px) and (max-width: 1366px) and (pointer: coarse)');
+  const returnTabletHome=()=>{
+    window.scrollTo({top:0,left:0,behavior:'instant'});
+    requestAnimationFrame(()=>{
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+    });
+  };
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('footer a[href="#top"]');
+    if(!tabletLayout.matches || !link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    history.replaceState(history.state,'','#top');
+    returnTabletHome();
+  });
+}
