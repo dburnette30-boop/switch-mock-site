@@ -127,9 +127,9 @@
   .cinematic-home .events-section>.schedule-note{display:none}
 }
 
-/* Place the band name within the lower half of the photo on phones and iPads. */
+/* Place the band name within the lower half of the photo on phones only. */
 .photo-title{display:none}
-@media(max-width:700px), (min-width:701px) and (max-width:1366px) and (pointer:coarse){
+@media(max-width:700px){
   .cinematic-home .hero{display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding:0;gap:0}
   .cinematic-home .hero-photo{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:auto;z-index:0;align-self:auto}
   .cinematic-home .hero-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
@@ -141,9 +141,7 @@
   .cinematic-home .phone-private-note{display:block;grid-column:1;grid-row:2;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
   .cinematic-home .tablet-private-note{display:none}
 }
-@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
-  .cinematic-home .photo-title{left:3%}
-}
+
 </style>
 </head>
 <body class="cinematic-home" id="top">
