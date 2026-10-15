@@ -114,6 +114,18 @@
 @media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
   .cinematic-home .hero-title{transform:translateX(-3vw)}
 }
+
+/* Put the private-events key directly beneath the opening photo on touch layouts. */
+.phone-private-note,.tablet-private-note{display:none}
+@media(max-width:700px){
+  .cinematic-home .phone-private-note{display:block;grid-column:1;grid-row:2;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
+  .cinematic-home .hero-copy{grid-row:3}
+  .cinematic-home .events-section>.schedule-note{display:none}
+}
+@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
+  .cinematic-home .tablet-private-note{display:block;max-width:none;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
+  .cinematic-home .events-section>.schedule-note{display:none}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
@@ -123,7 +135,9 @@
 <section class="hero">
   <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1 class="hero-title">SWITCH<span>featuring Ana</span></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
   <figure class="hero-photo"><img fetchpriority="high" src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
+<p class="phone-private-note">* Indicates private, resident, or members only events. Dates subject to change.</p>
 </section>
+<p class="tablet-private-note">* Indicates private, resident, or members only events. Dates subject to change.</p>
 <section class="section band-section" id="band"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p>Four artists. One shared rhythm.</p></div>
 <div class="band-grid">
   <article class="member"><img src="assets/ana-stage.jpeg" alt="Ana Aguiar" loading="lazy"><div><h3>Ana Aguiar</h3></div></article>
