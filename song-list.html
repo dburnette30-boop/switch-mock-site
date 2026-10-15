@@ -21,7 +21,15 @@ body.song-list-page{position:relative;isolation:isolate;background:#101214}
 @media(max-width:600px){
   .song-list-page #song-list{column-count:1}
 }
-</style></head><body class="song-list-page"><a class="skip" href="#main">Skip to content</a><header class="header"><a class="wordmark" href="index.html" aria-label="SWITCH featuring Ana home">SWITCH<span>featuring Ana</span></a><nav aria-label="Main navigation"><a href="index.html#band">The band</a><a href="band-bio.html">Band Bio</a><a href="videos.html">Videos</a><a href="photos.html">Photos</a><a href="song-list.html" aria-current="page" class="nav-song-list"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></svg><span>Song List</span></a><a href="index.html#events">Events</a><a href="index.html#booking" class="nav-book">Book SWITCH</a></nav></header><main id="main" class="inner-page"><section class="section"><a class="back-link" href="index.html">Home</a><div class="page-heading"><h1>Song List</h1></div><div class="song-list-content"><ul id="song-list" style="list-style:none;padding:0;display:grid;gap:0"><li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Ain’t Nobody</strong> <span>— Chaka Khan</span></li>
+
+/* Give phones a separate, stable background layer while the content scrolls. */
+@media(max-width:700px){
+  .song-list-page::before{display:none}
+  .song-list-background{position:fixed;top:0;left:0;width:var(--song-background-width,100vw);height:var(--song-background-height,100lvh);z-index:0;background:url("assets/song-list-background-original-logo.jpg") right center/cover no-repeat;pointer-events:none;transform:translateZ(0);backface-visibility:hidden;will-change:transform}
+  .song-list-page>.header,.song-list-page>main,.song-list-page>footer,.song-list-page>.skip{position:relative;z-index:1}
+}
+@media(min-width:701px){.song-list-background{display:none}}
+</style></head><body class="song-list-page"><div class="song-list-background" aria-hidden="true"></div><a class="skip" href="#main">Skip to content</a><header class="header"><a class="wordmark" href="index.html" aria-label="SWITCH featuring Ana home">SWITCH<span>featuring Ana</span></a><nav aria-label="Main navigation"><a href="index.html#band">The band</a><a href="band-bio.html">Band Bio</a><a href="videos.html">Videos</a><a href="photos.html">Photos</a><a href="song-list.html" aria-current="page" class="nav-song-list"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></svg><span>Song List</span></a><a href="index.html#events">Events</a><a href="index.html#booking" class="nav-book">Book SWITCH</a></nav></header><main id="main" class="inner-page"><section class="section"><a class="back-link" href="index.html">Home</a><div class="page-heading"><h1>Song List</h1></div><div class="song-list-content"><ul id="song-list" style="list-style:none;padding:0;display:grid;gap:0"><li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Ain’t Nobody</strong> <span>— Chaka Khan</span></li>
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Alejandro</strong> <span>— Lady Gaga</span></li>
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>All Around the World</strong></li>
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>All I Want for Christmas</strong> <span>— Vince Vance &amp; The Valiants</span></li>
@@ -196,4 +204,20 @@ body.song-list-page{position:relative;isolation:isolate;background:#101214}
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Will 2 Power Medley (Dreamin’ / Say It’s Gonna Rain)</strong></li>
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Wonderful Tonight</strong> <span>— Eric Clapton</span></li>
 <li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Word Up</strong> <span>— Cameo</span></li>
-<li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Zuit Suit Riot</strong> <span>— Cherry Poppin’ Daddies</span></li></ul></div></section></main><footer><a class="wordmark" href="index.html">SWITCH<span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p><a href="https://switchftana.com/" target="_blank" rel="noopener noreferrer">Original website</a></footer></body></html>
+<li style="padding:1rem 0;font-size:1.125rem;line-height:1.6"><strong>Zuit Suit Riot</strong> <span>— Cherry Poppin’ Daddies</span></li></ul></div></section></main><footer><a class="wordmark" href="index.html">SWITCH<span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p><a href="https://switchftana.com/" target="_blank" rel="noopener noreferrer">Original website</a></footer><script>
+/* Freeze the photo dimensions when browser controls expand or collapse. */
+(()=>{
+  let previousWidth=0;
+  const sizeBackground=()=>{
+    const width=document.documentElement.clientWidth;
+    if(width===previousWidth)return;
+    previousWidth=width;
+    const root=document.documentElement;
+    root.style.setProperty('--song-background-width',width+'px');
+    root.style.setProperty('--song-background-height',Math.max(root.clientHeight,window.innerHeight)+'px');
+  };
+  sizeBackground();
+  window.addEventListener('resize',sizeBackground,{passive:true});
+  window.addEventListener('pageshow',sizeBackground);
+})();
+</script></body></html>
