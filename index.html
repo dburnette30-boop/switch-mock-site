@@ -178,6 +178,11 @@
   .cinematic-home .booking-copy{padding-top:48px}
   .cinematic-home .booking-copy>p:has(>a[href^="mailto:"]){position:static;top:auto;left:auto;right:auto;max-width:390px;margin:28px 0;padding:0}
 }
+
+/* Show the full Events photo from its top edge on phones. */
+@media(max-width:700px){
+  .cinematic-home .events-background::before{background-size:contain;background-position:center top;background-repeat:no-repeat}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
