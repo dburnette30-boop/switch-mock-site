@@ -126,6 +126,24 @@
   .cinematic-home .tablet-private-note{display:block;max-width:none;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
   .cinematic-home .events-section>.schedule-note{display:none}
 }
+
+/* Place the band name within the lower half of the photo on phones and iPads. */
+.photo-title{display:none}
+@media(max-width:700px), (min-width:701px) and (max-width:1366px) and (pointer:coarse){
+  .cinematic-home .hero{display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding:0;gap:0}
+  .cinematic-home .hero-photo{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:auto;z-index:0;align-self:auto}
+  .cinematic-home .hero-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+  .cinematic-home .hero-photo::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}
+  .cinematic-home .photo-title{display:block;position:absolute;left:6%;bottom:7%;z-index:1;margin:0;text-shadow:0 2px 14px #000;transform:none}
+  .cinematic-home .hero-copy{grid-column:1;grid-row:3;padding:18px 6% 28px;background:#09080e}
+  .cinematic-home .hero-copy>.hero-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .cinematic-home .hero::after{display:none}
+  .cinematic-home .phone-private-note{display:block;grid-column:1;grid-row:2;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
+  .cinematic-home .tablet-private-note{display:none}
+}
+@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
+  .cinematic-home .photo-title{left:3%}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
@@ -134,7 +152,7 @@
 <main id="main">
 <section class="hero">
   <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1 class="hero-title">SWITCH<span>featuring Ana</span></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
-  <figure class="hero-photo"><img fetchpriority="high" src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
+  <figure class="hero-photo"><img fetchpriority="high" src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><div class="photo-title hero-title" aria-hidden="true">SWITCH<span>featuring Ana</span></div><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
 <p class="phone-private-note">* Indicates private, resident, or members only events. Dates subject to change.</p>
 </section>
 <p class="tablet-private-note">* Indicates private, resident, or members only events. Dates subject to change.</p>
