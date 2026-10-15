@@ -109,6 +109,11 @@
   .cinematic-home .hero-copy{grid-column:1;grid-row:2;padding:18px 6% 28px;background:#09080e}
   .cinematic-home .hero::after{display:none}
 }
+
+/* Move the title slightly left on iPad-sized touch screens. */
+@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
+  .cinematic-home .hero-title{transform:translateX(-3vw)}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
