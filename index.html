@@ -100,6 +100,15 @@
   .cinematic-home .hero-copy .eyebrow{font-size:10px;letter-spacing:1.2px}
   .cinematic-home .hero::after{background:linear-gradient(180deg,transparent 0%,rgba(9,8,14,.12) 20%,rgba(9,8,14,.72) 52%,#09080e 90%)}
 }
+
+/* Keep the band unobstructed on phones, regardless of viewport height. */
+@media(max-width:700px){
+  .cinematic-home .hero{display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding:0;gap:0}
+  .cinematic-home .hero-photo{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:auto;z-index:0;align-self:auto}
+  .cinematic-home .hero-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+  .cinematic-home .hero-copy{grid-column:1;grid-row:2;padding:18px 6% 28px;background:#09080e}
+  .cinematic-home .hero::after{display:none}
+}
 </style>
 </head>
 <body class="cinematic-home" id="top">
