@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  (() => {
+    // Open fresh visits and restored pages at Home, while allowing in-site section links.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    const navigation = performance.getEntriesByType('navigation')[0];
+    let fromThisSite = false;
+    try { fromThisSite = new URL(document.referrer).origin === location.origin; } catch {}
+    const followSection = fromThisSite && navigation?.type === 'navigate' &&
+      ['#band', '#events', '#booking', '#main'].includes(location.hash);
+    const returnToOpening = () => {
+      history.replaceState(history.state, '', location.pathname + location.search);
+      const toTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      toTop();
+      requestAnimationFrame(toTop);
+    };
+    if (!followSection) returnToOpening();
+    window.addEventListener('load', () => { if (!followSection) returnToOpening(); });
+    window.addEventListener('pageshow', event => {
+      if (event.persisted || !followSection) returnToOpening();
+    });
+  })();
+  </script>
   <title>SWITCH featuring Ana · Brevard’s premier dance party band</title>
   <meta name="description" content="SWITCH featuring Ana — Brevard's premier dance party band. Meet the band, explore shows, and plan your next event.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
