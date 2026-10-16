@@ -4,26 +4,76 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
   (() => {
-    // Open fresh visits and restored pages at Home, while allowing in-site section links.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     const navigation = performance.getEntriesByType('navigation')[0];
     let fromThisSite = false;
     try { fromThisSite = new URL(document.referrer).origin === location.origin; } catch {}
     const followSection = fromThisSite && navigation?.type === 'navigate' &&
       ['#band', '#events', '#booking', '#main'].includes(location.hash);
-    const returnToOpening = () => {
-      history.replaceState(history.state, '', location.pathname + location.search);
-      const toTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      toTop();
-      requestAnimationFrame(toTop);
+    const root = document.documentElement;
+    let settling = false;
+    let interrupted = false;
+    let timers = [];
+    const stopReset = () => {
+      settling = false;
+      timers.forEach(clearTimeout);
+      timers = [];
+      root.classList.remove('home-opening');
     };
-    if (!followSection) returnToOpening();
-    window.addEventListener('load', () => { if (!followSection) returnToOpening(); });
-    window.addEventListener('pageshow', event => {
-      if (event.persisted || !followSection) returnToOpening();
+    const cancelReset = () => { interrupted = true; stopReset(); };
+    const toTop = () => {
+      if (!settling) return;
+      // Reset both Safari's document scroller and its viewport.
+      const scroller = document.scrollingElement || root;
+      scroller.scrollTop = 0;
+      scroller.scrollLeft = 0;
+      window.scrollTo(0, 0);
+    };
+    const openHome = () => {
+      stopReset();
+      interrupted = false;
+      settling = true;
+      history.replaceState(history.state, '', location.pathname + location.search);
+      root.classList.add('home-opening');
+      toTop();
+      requestAnimationFrame(() => { toTop(); requestAnimationFrame(toTop); });
+      // Safari may restore a saved position after pageshow or viewport layout.
+      [80, 250, 500, 900, 1400].forEach(delay => timers.push(setTimeout(toTop, delay)));
+      timers.push(setTimeout(stopReset, 1500));
+    };
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(type =>
+      window.addEventListener(type, cancelReset, { passive: true }));
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href]');
+      if (!link || event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const target = new URL(link.href, location.href);
+      if (target.origin !== location.origin) return;
+      const homePath = target.pathname === '/' || target.pathname.endsWith('/index.html');
+      if (homePath && (!target.hash || target.hash === '#top')) {
+        event.preventDefault();
+        openHome();
+      }
     });
+    if (!followSection) openHome();
+    window.addEventListener('load', () => {
+      if (!followSection && !interrupted) openHome();
+    });
+    window.addEventListener('pageshow', event => {
+      if (event.persisted || (!followSection && !interrupted)) openHome();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') openHome();
+      else stopReset();
+    });
+    window.visualViewport?.addEventListener('resize', toTop);
+    document.fonts?.ready.then(toTop);
   })();
   </script>
+  <style>
+    html.home-opening { scroll-behavior: auto !important; overflow-anchor: none; }
+    html.home-opening body { scroll-behavior: auto !important; overflow-anchor: none; }
+  </style>
   <title>SWITCH featuring Ana · Brevard’s premier dance party band</title>
   <meta name="description" content="SWITCH featuring Ana — Brevard's premier dance party band. Meet the band, explore shows, and plan your next event.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
@@ -230,5 +280,5 @@
 <form id="booking-form" action="https://formsubmit.co/Ananfriendsent@aol.com" method="POST"><input type="hidden" name="_subject" value="SWITCH featuring Ana — Booking inquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://switchftana.com/"><h3>Booking information</h3><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><label for="message">Tell us about your event</label><textarea id="message" name="message" rows="4" placeholder="Date, venue, and what you have in mind…" required></textarea><button type="submit" class="button primary">Send booking inquiry</button><p class="form-note">Submit your event details directly to Ana’s booking email.</p></form></section>
 </main>
 <footer><a class="wordmark" href="#top">SWITCH<span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p><a href="https://switchftana.com/" target="_blank" rel="noopener noreferrer">Original website</a></footer>
-<script src="script.js?v=ipad-home-20261015"></script>
+<script src="script.js?v=ipad-opening-20261016"></script>
 </body></html>
