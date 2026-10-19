@@ -26,6 +26,7 @@ body{background:#09080e;--lens-photo:url("data:image/webp;base64,UklGRqa4AQBXRUJ
 /* Open desktop media pages at their title, below the site header. */
 (() => {
   if (!matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches) return;
+  document.querySelector('#main > .section > .back-link')?.remove();
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   let interrupted = false;
   ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(type =>
