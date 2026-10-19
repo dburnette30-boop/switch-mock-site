@@ -252,6 +252,7 @@ body.song-list-page{position:relative;isolation:isolate;background:#101214}
 /* Open the desktop song list at its title, below the site header. */
 (() => {
   if (!matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches) return;
+  document.querySelector('#main > .section > .back-link')?.remove();
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   let interrupted = false;
   ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(type =>
