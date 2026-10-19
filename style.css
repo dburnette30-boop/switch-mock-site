@@ -78,3 +78,13 @@ nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .n
   .header nav,.cinematic-home .header nav{gap:8px}
   .header nav>a,.header nav .nav-book{padding:8px 14px;min-height:44px}
 }
+
+/* Desktop booking fills the viewport and lands flush with its top edge. */
+@media (min-width: 701px) and (hover: hover) and (pointer: fine) {
+  html:has(body.cinematic-home #booking:target) { scroll-padding-top: 0; }
+  .cinematic-home .booking-section {
+    min-height: 100svh;
+    padding-top: clamp(24px, 4svh, 48px);
+    padding-bottom: clamp(24px, 4svh, 48px);
+  }
+}
