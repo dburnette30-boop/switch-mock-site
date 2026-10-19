@@ -81,6 +81,7 @@ nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .n
 
 /* Desktop section links land flush with the viewport; booking fills it. */
 @media (min-width: 701px) and (hover: hover) and (pointer: fine) {
+  html:has(body.cinematic-home #band:target),
   html:has(body.cinematic-home #booking:target),
   html:has(body.cinematic-home #events:target) { scroll-padding-top: 0; }
   .cinematic-home #booking.booking-section {
