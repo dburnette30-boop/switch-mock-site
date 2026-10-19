@@ -247,4 +247,23 @@ body.song-list-page{position:relative;isolation:isolate;background:#101214}
   window.addEventListener('resize',sizeBackground,{passive:true});
   window.addEventListener('pageshow',sizeBackground);
 })();
-</script></body></html>
+</script>
+<script>
+/* Open the desktop song list at its title, below the site header. */
+(() => {
+  if (!matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches) return;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  let interrupted = false;
+  ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(type =>
+    window.addEventListener(type, () => { interrupted = true; }, {passive: true, once: true}));
+  const showSongList = () => {
+    if (interrupted) return;
+    const heading = document.querySelector('.page-heading');
+    window.scrollTo({top: window.scrollY + heading.getBoundingClientRect().top - 24, behavior: 'instant'});
+  };
+  showSongList();
+  window.addEventListener('load', showSongList, {once: true});
+  document.fonts?.ready.then(showSongList);
+})();
+</script>
+</body></html>
