@@ -1,23 +1,5 @@
 <!doctype html>
-<html lang="en" class="song-list-root"><head><script>
-(() => {
-  // A fresh opening starts at Home; links clicked within the site stay usable.
-  const navigation = performance.getEntriesByType('navigation')[0];
-  let internalNavigation = false;
-  try {
-    internalNavigation = new URL(document.referrer).origin === location.origin &&
-      navigation?.type === 'navigate';
-  } catch {}
-  const openHome = () => location.replace(new URL('index.html', location.href).href);
-  if (!internalNavigation) openHome();
-  window.addEventListener('pageshow', event => {
-    if (event.persisted) openHome();
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') openHome();
-  });
-})();
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Song List · SWITCH featuring Ana</title><meta name="description" content="Song list for SWITCH featuring Ana."><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><style>
+<html lang="en" class="song-list-root"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Song List · SWITCH featuring Ana</title><meta name="description" content="Song list for SWITCH featuring Ana."><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><style>
 body.song-list-page{position:relative;isolation:isolate;background:#101214}
 .song-list-page::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;background:url("assets/song-list-background-original-logo.jpg") right center/cover no-repeat;pointer-events:none}
 .song-list-page .header,.song-list-page footer{background:transparent;border:0}
