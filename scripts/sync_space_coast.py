@@ -87,7 +87,11 @@ def main():
                 raise
             time.sleep(2 ** attempt)
     OUTPUT.write_text(json.dumps({'source': SOURCE, 'events': events}, ensure_ascii=False, indent=2) + '\n')
-    print(f'Imported {len(events)} SWITCH shows')
+    if events:
+        print(f'Imported {len(events)} SWITCH shows')
+    else:
+        print('Imported 0 SWITCH shows: Space Coast Live explicitly reports no upcoming shows. '
+              'Manually entered website dates are preserved.')
 
 
 if __name__ == '__main__':
