@@ -90,3 +90,8 @@ nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .n
     padding-bottom: clamp(24px, 4svh, 48px);
   }
 }
+
+/* Bring the Photos heading and gallery closer to the navigation. */
+.inner-page .section:has(>.photos-heading){padding-top:24px}
+.page-heading.photos-heading{margin:12px auto 36px}
+@media(max-width:700px){.inner-page .section:has(>.photos-heading){padding-top:16px}.page-heading.photos-heading{margin:8px auto 28px}}
