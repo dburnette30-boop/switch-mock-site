@@ -3,278 +3,38 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
-  (() => {
+    // Fresh visits open at the top; section links within the site still work.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    const hasSectionTarget = () =>
-      ['#band', '#events', '#booking', '#main'].includes(location.hash);
-    const followSection = hasSectionTarget();
-    const root = document.documentElement;
-    let settling = false;
-    let interrupted = false;
-    let timers = [];
-    const stopReset = () => {
-      settling = false;
-      timers.forEach(clearTimeout);
-      timers = [];
-      root.classList.remove('home-opening');
-    };
-    const cancelReset = () => { interrupted = true; stopReset(); };
-    const toTop = () => {
-      if (!settling) return;
-      // Reset both Safari's document scroller and its viewport.
-      const scroller = document.scrollingElement || root;
-      scroller.scrollTop = 0;
-      scroller.scrollLeft = 0;
-      window.scrollTo(0, 0);
-    };
-    const openHome = () => {
-      stopReset();
-      interrupted = false;
-      settling = true;
+    const arrivedFromSite = document.referrer && new URL(document.referrer).origin === location.origin;
+    if (location.hash && !arrivedFromSite) {
       history.replaceState(history.state, '', location.pathname + location.search);
-      root.classList.add('home-opening');
-      toTop();
-      requestAnimationFrame(() => { toTop(); requestAnimationFrame(toTop); });
-      // Safari may restore a saved position after pageshow or viewport layout.
-      [80, 250, 500, 900, 1400].forEach(delay => timers.push(setTimeout(toTop, delay)));
-      timers.push(setTimeout(stopReset, 1500));
-    };
-    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(type =>
-      window.addEventListener(type, cancelReset, { passive: true }));
-    document.addEventListener('click', event => {
-      const link = event.target.closest('a[href]');
-      if (!link || event.defaultPrevented || event.button !== 0 ||
-          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const target = new URL(link.href, location.href);
-      if (target.origin !== location.origin) return;
-      const homePath = target.pathname === '/' || target.pathname.endsWith('/index.html');
-      if (homePath && (!target.hash || target.hash === '#top')) {
-        event.preventDefault();
-        openHome();
-      }
-    });
-    if (!followSection) openHome();
-    window.addEventListener('load', () => {
-      if (!followSection && !interrupted) openHome();
-    });
-    window.addEventListener('pageshow', event => {
-      if (!hasSectionTarget() && (event.persisted || (!followSection && !interrupted))) openHome();
-    });
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible' && !hasSectionTarget()) openHome();
-      else stopReset();
-    });
-    window.visualViewport?.addEventListener('resize', toTop);
-    document.fonts?.ready.then(toTop);
-  })();
+    }
+    function resetHomeScroll() {
+      if (!location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+    window.addEventListener('load', resetHomeScroll);
+    window.addEventListener('pageshow', resetHomeScroll);
   </script>
-  <style>
-    html.home-opening { scroll-behavior: auto !important; overflow-anchor: none; }
-    html.home-opening body { scroll-behavior: auto !important; overflow-anchor: none; }
-  </style>
   <title>SWITCH featuring Ana · Brevard’s premier dance party band</title>
   <meta name="description" content="SWITCH featuring Ana — Brevard's premier dance party band. Meet the band, explore shows, and plan your next event.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=pc-band-20261019">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=footer-band-logo-20261115">
 <style>
-/* Cinematic front page, using the band's own photograph. */
-.cinematic-home{--bg:#09080e;--surface:#131019;--gold:#d2b77e;background:var(--bg)}
-.cinematic-home .header{max-width:none;min-height:100px;background:#09080e;border:0;padding:22px 5%}
-.cinematic-home nav{gap:8px 16px}
-.cinematic-home nav>a{color:#e4d1fa}
-.cinematic-home .hero{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;display:flex;align-items:flex-end;min-height:clamp(700px,68vw,1000px);padding:0 6% 70px;gap:0}
-.cinematic-home .hero-photo{position:absolute;inset:0;z-index:-2;margin:0;padding:0;display:block;transform:none}
-.cinematic-home .hero-photo::before,.cinematic-home .hero-photo figcaption{display:none}
-.cinematic-home .hero-photo img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center top;filter:none}
-.cinematic-home .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(9,8,14,.08) 0%,rgba(9,8,14,0) 32%,rgba(9,8,14,.35) 56%,rgba(9,8,14,.93) 88%,#09080e 100%)}
-.cinematic-home .hero-copy{width:100%;max-width:1000px;padding:0;text-shadow:0 2px 20px #000}
-.cinematic-home .hero-copy .eyebrow{font-size:13px;letter-spacing:3px;color:#e4d1fa;margin:0 0 18px}
-.cinematic-home .hero-title{font:700 clamp(72px,10vw,150px)/.95 var(--sans);letter-spacing:clamp(3px,.8vw,12px);margin:0}
-.cinematic-home .hero-title span{display:block;font:italic 400 clamp(35px,4vw,62px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:12px}
-.cinematic-home .hero-copy .intro{font-size:clamp(19px,2.1vw,28px);margin:24px 0 10px}
-.cinematic-home .hero-description{max-width:620px;color:#e3dfe9;font-size:17px;margin:0 0 24px}
-.cinematic-home .hero-buttons{gap:24px}
-.cinematic-home .hero-buttons .button{background:transparent;color:#fff;border:0;border-bottom:1px solid #c9a2f5;min-height:44px;padding:7px 0;border-radius:0;font-size:16px;letter-spacing:.5px}
-.cinematic-home .hero-buttons .button:hover{color:#d8b7ff;text-decoration:none}
-.cinematic-home .ribbon{border:0;padding:22px 0;color:#c2b6cf}
-.cinematic-home .section{padding-top:90px;padding-bottom:90px}
-.cinematic-home .member img{filter:none}
-.cinematic-home .member>div{border:0}
-.cinematic-home .events-section{background:linear-gradient(135deg,#171020,#09080e 75%);color:#f7f5ef}
-.cinematic-home .events-section .eyebrow,.cinematic-home .events-section .text-link,.cinematic-home .date span{color:#d2b77e}
-.cinematic-home .event{border-color:#ffffff20}
-.cinematic-home .date{border-color:#ffffff20}
-.cinematic-home .venue p,.cinematic-home .event-note,.cinematic-home .schedule-note{color:#c2b6cf}
-.cinematic-home form{background:transparent;border:0;padding:0}
-.cinematic-home footer{border:0}
-@media(max-width:700px){
-.cinematic-home .header{padding:20px 6%;gap:20px}
-.cinematic-home nav{display:flex;gap:4px 10px}
-.cinematic-home .hero{min-height:calc(79.2vw + 170px);padding:38vw 6% 36px;display:flex;align-items:flex-end}
-.cinematic-home .hero-photo{position:absolute;inset:0 0 auto;margin:0;height:auto;z-index:-2}
-.cinematic-home .hero-photo img{height:auto;width:100%;object-fit:contain;object-position:center top}
-.cinematic-home .hero::after{display:block;background:linear-gradient(180deg,transparent 0%,rgba(9,8,14,.08) 22%,rgba(9,8,14,.60) 50%,#09080e 78%)}
-.cinematic-home .hero-copy{position:relative;margin:0;padding:0;background:transparent;z-index:1}
-.cinematic-home .hero-title{font-size:clamp(60px,14vw,98px);letter-spacing:5px}
-.cinematic-home .hero-title span{font-size:clamp(30px,8vw,38px)}
-.cinematic-home .hero-copy .eyebrow{font-size:11px;letter-spacing:1.7px}
-.cinematic-home .hero-description{font-size:16px}
-.cinematic-home .section{padding-top:64px;padding-bottom:64px}
-}
-
-/* Concert photograph behind the scrolling show schedule. */
-.cinematic-home .events-section{position:relative;isolation:isolate;background:#100a19;text-shadow:0 1px 4px #000}
-.events-background{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.events-background::before{content:"";display:block;position:sticky;top:0;height:100vh;height:100svh;background:url("assets/events-background-sax.jpg") center center/cover no-repeat}
-.cinematic-home .events-section .venue p,.cinematic-home .events-section .event-note,.cinematic-home .events-section .schedule-note{color:#eee6f5}
-
-/* Stage lighting carries the concert atmosphere into booking. */
-.cinematic-home .booking-section{
-  position:relative;
-  max-width:none;
-  min-height:760px;
-  background:linear-gradient(90deg,rgba(9,8,14,.58),rgba(9,8,14,.18)),url("assets/events-background-sax.jpg") center bottom/cover no-repeat;
-  background-attachment:scroll;
-  color:#f7f5ef;
-}
-.cinematic-home .booking-copy{text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.cinematic-home .booking-copy>p:not(.eyebrow){color:#eee6f5}
-.cinematic-home .booking-section form{
-  background:rgba(12,8,20,.76);
-  border:1px solid rgba(210,183,126,.32);
-  padding:32px;
-}
-.cinematic-home .booking-section input,.cinematic-home .booking-section textarea{background:rgba(9,8,14,.8)}
-.cinematic-home .booking-section .form-note{color:#d7cede}
-@media(max-width:700px){
-  .cinematic-home .booking-section{min-height:0;background-position:44% bottom;gap:36px}
-  .cinematic-home .booking-section form{padding:24px 20px}
-}
-
-/* Fit the opening scene beneath the navigation within the first screen. */
-.cinematic-home .header{min-height:0;padding:14px 5%;gap:12px 24px}
-.cinematic-home .hero{
-  min-height:calc(100svh - var(--home-header-height,160px));
-  padding:24px 6% clamp(20px,4svh,42px);
-}
-.cinematic-home .hero-title{font-size:clamp(58px,min(9vw,14svh),120px)}
-.cinematic-home .hero-title span{font-size:clamp(28px,5svh,48px);margin-top:8px}
-.cinematic-home .hero-copy .eyebrow{margin-bottom:12px}
-.cinematic-home .hero-copy .intro{font-size:clamp(17px,2.8svh,24px);margin:16px 0 8px}
-.cinematic-home .hero-description{font-size:16px;line-height:1.6;margin-bottom:16px}
-@media(max-width:700px){
-  .cinematic-home .header{padding:12px 6%;gap:12px}
-  .cinematic-home .hero{padding:20px 6% 24px}
-  .cinematic-home .hero-title{font-size:clamp(48px,12vw,76px);letter-spacing:3px}
-  .cinematic-home .hero-title span{font-size:clamp(26px,7vw,34px)}
-  .cinematic-home .hero-description{font-size:14px}
-  .cinematic-home .hero-copy .eyebrow{font-size:10px;letter-spacing:1.2px}
-  .cinematic-home .hero::after{background:linear-gradient(180deg,transparent 0%,rgba(9,8,14,.12) 20%,rgba(9,8,14,.72) 52%,#09080e 90%)}
-}
-
-/* Keep the band unobstructed on phones, regardless of viewport height. */
-@media(max-width:700px){
-  .cinematic-home .hero{display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding:0;gap:0}
-  .cinematic-home .hero-photo{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:auto;z-index:0;align-self:auto}
-  .cinematic-home .hero-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
-  .cinematic-home .hero-copy{grid-column:1;grid-row:2;padding:18px 6% 28px;background:#09080e}
-  .cinematic-home .hero::after{display:none}
-}
-
-/* Move the title slightly left on iPad-sized touch screens. */
-@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
-  .cinematic-home .hero-title{transform:translateX(-3vw)}
-}
-
-/* Put the private-events key directly beneath the opening photo on touch layouts. */
-.phone-private-note,.tablet-private-note{display:none}
-@media(max-width:700px){
-  .cinematic-home .phone-private-note{display:block;grid-column:1;grid-row:2;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
-  .cinematic-home .hero-copy{grid-row:3}
-  .cinematic-home .events-section>.schedule-note{display:none}
-}
-@media(min-width:701px) and (max-width:1366px) and (pointer:coarse){
-  .cinematic-home .tablet-private-note{display:block;max-width:none;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
-  .cinematic-home .events-section>.schedule-note{display:none}
-}
-
-/* Place the band name within the lower half of the photo on phones only. */
-.photo-title{display:none}
-@media(max-width:700px){
-  .cinematic-home .hero{display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding:0;gap:0}
-  .cinematic-home .hero-photo{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:auto;z-index:0;align-self:auto}
-  .cinematic-home .hero-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
-  .cinematic-home .hero-photo::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}
-  .cinematic-home .photo-title{display:block;position:absolute;left:6%;bottom:7%;z-index:1;margin:0;text-shadow:0 2px 14px #000;transform:none}
-  .cinematic-home .hero-copy{grid-column:1;grid-row:3;padding:18px 6% 28px;background:#09080e}
-  .cinematic-home .hero-copy>.hero-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-  .cinematic-home .hero::after{display:none}
-  .cinematic-home .phone-private-note{display:block;grid-column:1;grid-row:2;margin:0;padding:12px 6%;background:#09080e;color:#c2b6cf;font-size:13px;line-height:1.6}
-  .cinematic-home .tablet-private-note{display:none}
-}
-
-
-/* Phone events scroll independently over a stationary concert photo. */
-.events-scroll{display:contents}
-@media(max-width:700px){
-  .cinematic-home .events-section{height:100svh;min-height:0;padding:0;overflow:hidden}
-  .cinematic-home .events-background{position:absolute;inset:0;overflow:hidden}
-  .cinematic-home .events-background::before{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(0);backface-visibility:hidden}
-  .cinematic-home .events-scroll{display:block;position:absolute;inset:0;overflow-x:hidden;overflow-y:auto;padding:48px 6% 40px;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
-  .cinematic-home .events-scroll:focus{outline:none}
-}
-
-/* Show the Events concert photo clearly behind the phone booking introduction. */
-@media(max-width:700px){
-  .cinematic-home .booking-section{display:block;padding:0;background:#09080e;min-height:0}
-  .cinematic-home .booking-copy{min-height:100svh;padding:48px 6%;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,rgba(9,8,14,.18),rgba(9,8,14,.5)),url("assets/events-background-sax.jpg") center center/cover no-repeat}
-  .cinematic-home .booking-section form{margin:32px 6% 48px}
-}
-
-/* Anchor social links at the bottom of the phone booking photo. */
-@media(max-width:700px){
-  .cinematic-home .booking-copy{position:relative;padding-bottom:100px}
-  .cinematic-home .booking-copy .social{position:absolute;left:6%;right:6%;bottom:28px}
-}
-
-/* Place phone booking contact links at the top and bottom of the photo. */
-@media(max-width:700px){
-  .cinematic-home .booking-copy{padding-top:96px;padding-bottom:96px}
-  .cinematic-home .booking-copy>p:has(>a[href^="mailto:"]){position:absolute;top:0;left:6%;right:6%;max-width:none;margin:0;padding:12px 0;line-height:1.5}
-  .cinematic-home .booking-copy .social{left:6%;right:6%;bottom:0;padding:12px 0}
-}
-
-/* Return Ana's email to the booking text inside the phone photo. */
-@media(max-width:700px){
-  .cinematic-home .booking-copy{padding-top:48px}
-  .cinematic-home .booking-copy>p:has(>a[href^="mailto:"]){position:static;top:auto;left:auto;right:auto;max-width:390px;margin:28px 0;padding:0}
-}
-
-/* Show the full Events photo from its top edge on phones. */
-@media(max-width:700px){
-  .cinematic-home .events-background::before{background-size:contain;background-position:center top;background-repeat:no-repeat}
-}
-
-/* Match the phone photo lettering on larger screens. */
-@media(min-width:701px){.cinematic-home .hero-photo .photo-title{display:block;position:absolute;left:6%;bottom:7%;z-index:1;margin:0;font:700 clamp(48px,6vw,98px)/.95 var(--sans);letter-spacing:5px;color:#f7f5ef;text-shadow:0 2px 14px #000;transform:none}.cinematic-home .hero-photo .photo-title span{display:block;font:italic 400 clamp(28px,3vw,46px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:12px}}
-
-/* Subtle lower-photo shade behind the desktop band lettering. */
-@media(min-width:701px){.cinematic-home .hero-photo::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}}
-
-/* Keep the Events photo stationary while the schedule scrolls on larger screens too. */
-@media(min-width:701px){.cinematic-home .events-section{height:100svh;min-height:0;padding:0;overflow:hidden}.cinematic-home .events-background{position:absolute;inset:0;overflow:hidden}.cinematic-home .events-background::before{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(0);backface-visibility:hidden}.cinematic-home .events-scroll{display:block;position:absolute;inset:0;overflow-x:hidden;overflow-y:auto;padding:48px 6% 40px;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}.cinematic-home .events-scroll:focus{outline:none}}
-</style>
-</head>
-<body class="cinematic-home" id="top">
+.home-photo-frame{position:relative}
+.home-photo-title{position:absolute;left:6%;bottom:2%;z-index:1;margin:0;font:700 clamp(38px,4.5vw,76px)/.95 var(--sans);letter-spacing:4px;color:#f7f5ef;text-shadow:0 2px 14px #000;pointer-events:none}
+.home-photo-title span{display:block;font:italic 400 clamp(24px,2.5vw,38px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:10px}
+@media(max-width:700px){.home-photo-title{font-size:clamp(38px,10vw,76px)}.home-photo-title span{font-size:clamp(24px,6vw,34px)}}
+.home-photo-frame::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}
+</style></head>
+<body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="header"><a class="wordmark" href="index.html" aria-label="SWITCH featuring Ana home">SWITCH<span>featuring Ana</span></a><nav aria-label="Main navigation"><a href="index.html#band">The band</a><a href="band-bio.html?v=pc-bio-no-home-20261019">Band Bio</a><a href="videos.html?v=pc-no-home-20261019">Videos</a><a href="photos.html?v=pc-no-home-20261019">Photos</a><a href="song-list.html?v=pc-no-home-20261019" class="nav-song-list"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></svg><span>Song List</span></a><a href="index.html#events">Events</a><a href="index.html#booking" class="nav-book">Book SWITCH</a></nav></header>
+<header class="header"><a class="wordmark" href="index.html" aria-label="SWITCH featuring Ana home"><img class="header-band-logo" src="assets/switch-band-wordmark.png" alt="SWITCH"><span>featuring Ana</span></a><nav aria-label="Main navigation"><a href="index.html#band">The band</a><a href="band-bio.html">Band Bio</a><a href="videos.html">Videos</a><a href="photos.html">Photos</a><a href="index.html#events">Events</a><a href="song-list.html"><svg class="song-list-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13M9 5v4l12-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="18" cy="16" rx="3" ry="2"/></svg><span>Song List</span></a><a href="index.html#booking" class="nav-book">Book SWITCH</a></nav></header>
 <main id="main">
-<section class="hero">
-  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1 class="hero-title">SWITCH<span>featuring Ana</span></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
-  <figure class="hero-photo"><img fetchpriority="high" src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><div class="photo-title hero-title" aria-hidden="true">SWITCH<span>featuring Ana</span></div><figcaption><span>SWITCH</span> featuring Ana · Meet the band</figcaption></figure>
-
+<section class="hero" id="top">
+  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1>A night <br>to <em>remember.</em></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
+  <figure class="hero-photo"><div class="home-photo-frame"><img src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><div class="home-photo-title" aria-hidden="true"><img class="home-band-logo" src="assets/switch-band-wordmark.png" alt="" width="1920" height="832"><span>featuring Ana</span></div></div></figure>
 </section>
-
-<section class="section band-section" id="band"><div class="section-heading" style="display: block; text-align: center;"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p>Four artists. One shared rhythm.</p></div>
+<div class="ribbon" aria-label="Band name"><span>SWITCH featuring Ana</span><span>Music that moves you.</span><span>Let’s dance.</span></div>
+<section class="section band-section" id="band"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p>Four artists. One shared rhythm.</p></div>
 <div class="band-grid">
   <article class="member"><img src="assets/ana-stage.jpeg" alt="Ana Aguiar" loading="lazy"><div><h3>Ana Aguiar</h3></div></article>
   <article class="member"><img src="assets/gary-stage.jpeg" alt="Gary Kirby" loading="lazy"><div><h3>Gary Kirby</h3></div></article>
@@ -284,9 +44,9 @@
 <section class="section events-section" id="events"><div class="events-background" aria-hidden="true"></div><div class="events-scroll" role="region" aria-label="Scrollable show schedule" tabindex="0"><div class="section-heading"><div><p class="eyebrow">See you on the dance floor</p><h2>SWITCH Ft. Ana<br>Upcoming Shows</h2></div><a class="text-link" href="https://www.facebook.com/switchfeaturingana" target="_blank" rel="noopener noreferrer">Latest updates on Facebook</a></div>
 <h3>2026 Show Dates</h3>
 <div class="schedule-month"><h3 class="schedule-month-title">November 2026</h3><div class="event-list"><article class="event"><div class="date"><span>NOV</span><strong>13</strong></div><div class="venue"><h3>Tiffany’s Boathouse</h3><p>Friday</p></div><p class="time">7 PM – 10 PM</p><span class="event-note"></span></article><article class="event"><div class="date"><span>NOV</span><strong>21</strong></div><div class="venue"><h3>Cadillac Cove</h3><p>Saturday</p></div><p class="time">8 PM – 12 AM</p><span class="event-note"></span></article><article class="event"><div class="date"><span>NOV</span><strong>28</strong></div><div class="venue"><h3>Crowne Plaza</h3><p>Saturday</p></div><p class="time">6 PM – 9 PM</p><span class="event-note"></span></article></div></div><div class="schedule-month"><h3 class="schedule-month-title">December 2026</h3><div class="event-list"><article class="event"><div class="date"><span>DEC</span><strong>05</strong></div><div class="venue"><h3>Lou’s Blues</h3><p>Saturday</p></div><p class="time">9 PM – 1 AM</p><span class="event-note"></span></article><article class="event"><div class="date"><span>DEC</span><strong>12</strong></div><div class="venue"><h3>Cadillac Cove</h3><p>Saturday</p></div><p class="time">8 PM – 12 AM</p><span class="event-note"></span></article><article class="event"><div class="date"><span>DEC</span><strong>18</strong></div><div class="venue"><h3>*Barefoot Bay</h3><p>Friday</p></div><p class="time">7 PM – 10:30 PM</p><span class="event-note">Private, resident, or members only</span></article><article class="event"><div class="date"><span>DEC</span><strong>27</strong></div><div class="venue"><h3>Crowne Plaza</h3><p>Sunday</p></div><p class="time">1 PM – 4 PM</p><span class="event-note"></span></article><article class="event"><div class="date"><span>DEC</span><strong>30</strong></div><div class="venue"><h3>*In coordination</h3><p>Wednesday</p></div><p class="time">6:30 PM – 9:30 PM</p><span class="event-note">Private, resident, or members only</span></article></div></div><p class="schedule-note"><a class="text-link" href="https://www.spacecoastlive.com/bands/touch-d" target="_blank" rel="noopener noreferrer">View SWITCH on Space Coast Live ↗</a></p></div></section>
-<section class="section booking-section" id="booking"><div class="booking-copy"><p class="eyebrow">Make it a SWITCH night</p><h2>Your event.<br>Our <em>stage.</em></h2><p>Planning a show or special event? Get in touch with SWITCH featuring Ana.</p><p><a href="mailto:Ananfriendsent@aol.com" style="color:var(--gold);overflow-wrap:anywhere">Ananfriendsent@aol.com</a></p><div class="social"><a href="https://www.facebook.com/switchfeaturingana" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/switch.featuring.ana" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
-<form id="booking-form" action="https://formsubmit.co/Ananfriendsent@aol.com" method="POST"><input type="hidden" name="_subject" value="SWITCH featuring Ana — Booking inquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://switchftana.com/"><h3>Booking information</h3><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><label for="message">Tell us about your event</label><textarea id="message" name="message" rows="4" placeholder="Date, venue, and what you have in mind…" required></textarea><button type="submit" class="button primary">Send booking inquiry</button><p class="form-note">Submit your event details directly to Ana’s booking email.</p></form></section>
+<section class="section booking-section" id="booking"><div class="booking-copy"><p class="eyebrow">Make it a SWITCH night</p><h2>Your event.<br>Our <em>stage.</em></h2><p>Planning a show or special event? Get in touch with SWITCH featuring Ana.</p><div class="social"><a href="https://www.facebook.com/switchfeaturingana" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/switch.featuring.ana" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
+<form id="booking-form"><h3>Booking information</h3><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><label for="message">Tell us about your event</label><textarea id="message" name="message" rows="4" placeholder="Date, venue, and what you have in mind…" required></textarea><button type="submit" class="button primary">Preview inquiry</button><p class="form-note">Mockup preview only. This form does not send a message.</p><div id="inquiry-preview" role="status" hidden></div></form></section>
 </main>
-<footer><a class="wordmark" href="#top">SWITCH<span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p></footer>
-<script src="script.js?v=ipad-opening-20261016"></script>
-<script src="space-coast-events.js?v=20261031"></script></body></html>
+<footer><a class="wordmark" href="#top"><img class="footer-band-logo" src="assets/switch-band-wordmark.png" alt="SWITCH"><span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p></footer>
+<script src="script.js"></script>
+<script src="space-coast-events.js?v=20261111"></script></body></html>

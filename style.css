@@ -8,10 +8,10 @@
 @media(max-width:380px){nav{gap:12px;font-size:14px}.wordmark{font-size:23px;letter-spacing:3px}.nav-book{padding:9px!important}.member h3{font-size:23px}.hero-buttons{gap:10px}.button{padding:13px 18px}.ribbon{letter-spacing:.3px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-/* Simple navigation links, shared by every page. */
-.header{flex-wrap:wrap}nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}nav>a,nav .nav-book{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;background:transparent;border:0;border-radius:0;color:#c9a2f5;font-weight:600;transition:background .2s,border-color .2s}nav>a:hover,nav .nav-book:hover{background:transparent;border-color:transparent;color:#e0c5ff;text-decoration:underline}nav>a[aria-current="page"]{background:transparent;border-color:transparent;box-shadow:none;color:#e0c5ff;text-decoration:underline;text-underline-offset:6px}.inner-page{min-height:65vh}.inner-page .section{padding-top:55px}.back-link{font-size:14px;color:var(--gold);border-bottom:1px solid #d2b77e55;padding-bottom:5px}.page-heading{margin:45px 0 50px;max-width:900px}.page-heading .eyebrow{margin-bottom:18px}.page-heading h1{font-size:clamp(54px,6vw,90px)}.bio-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:6%;align-items:center}.bio-photo{display:block;width:100%;aspect-ratio:1.5;object-fit:cover}.bio-copy p{color:var(--muted);margin:0 0 24px}.page-members{margin-top:80px}.page-members h2{margin-bottom:35px}.video-empty{border:1px solid #976bce66;background:#6435a518;padding:48px;max-width:850px}.video-empty h2{font-size:44px}.video-empty p{color:var(--muted);margin:20px 0 28px}.photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}.photo-gallery figure{margin:0}.photo-gallery img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}.photo-gallery .gallery-wide{grid-column:1/-1}.photo-gallery .gallery-wide img{aspect-ratio:1.8}.photo-gallery figcaption{padding:16px 0;color:var(--muted);border-bottom:1px solid var(--line)}
+/* Purple navigation tiles, shared by every page. */
+.header{flex-wrap:wrap}nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}nav>a,nav .nav-book{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;background:#6435a5;border:1px solid #976bce;border-radius:999px;color:#fff;font-weight:600;transition:background .2s,border-color .2s}nav>a:hover,nav .nav-book:hover{background:#7c46c1;border-color:#bb96ef;color:#fff;text-decoration:none}nav>a[aria-current="page"]{background:#854dcb;border-color:#d9b8ff;box-shadow:inset 0 -3px 0 #d9b8ff}.inner-page{min-height:65vh}.inner-page .section{padding-top:55px}.back-link{font-size:14px;color:var(--gold);border-bottom:1px solid #d2b77e55;padding-bottom:5px}.page-heading{margin:45px 0 50px;max-width:900px}.page-heading .eyebrow{margin-bottom:18px}.page-heading h1{font-size:clamp(54px,6vw,90px)}.bio-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:6%;align-items:center}.bio-photo{display:block;width:100%;aspect-ratio:1.5;object-fit:cover}.bio-copy p{color:var(--muted);margin:0 0 24px}.page-members{margin-top:80px}.page-members h2{margin-bottom:35px}.video-empty{border:1px solid #976bce66;background:#6435a518;padding:48px;max-width:850px}.video-empty h2{font-size:44px}.video-empty p{color:var(--muted);margin:20px 0 28px}.photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}.photo-gallery figure{margin:0}.photo-gallery img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}.photo-gallery .gallery-wide{grid-column:1/-1}.photo-gallery .gallery-wide img{aspect-ratio:1.8}.photo-gallery figcaption{padding:16px 0;color:var(--muted);border-bottom:1px solid var(--line)}
 @media(max-width:1000px){.header{gap:22px}nav{max-width:100%;gap:8px}nav>a,nav .nav-book{padding:10px 14px}}
-@media(max-width:700px){.header{align-items:flex-start}nav{width:100%;justify-content:flex-start;display:flex;flex-wrap:wrap;gap:4px 12px}nav>a:first-child{display:inline-flex}nav>a,nav .nav-book{min-height:46px;padding:10px 8px;font-size:14px}.inner-page .section{padding-top:32px}.page-heading{margin:32px 0}.bio-layout{grid-template-columns:1fr;gap:28px}.page-members{margin-top:55px}.video-empty{padding:28px 22px}.video-empty h2{font-size:36px}.photo-gallery{gap:24px 16px}.photo-gallery .gallery-wide img{aspect-ratio:1.4}}
+@media(max-width:700px){.header{align-items:flex-start}nav{width:100%;justify-content:flex-start;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}nav>a:first-child{display:inline-flex}nav>a,nav .nav-book{min-height:46px;padding:10px 8px;font-size:14px}.inner-page .section{padding-top:32px}.page-heading{margin:32px 0}.bio-layout{grid-template-columns:1fr;gap:28px}.page-members{margin-top:55px}.video-empty{padding:28px 22px}.video-empty h2{font-size:36px}.photo-gallery{gap:24px 16px}.photo-gallery .gallery-wide img{aspect-ratio:1.4}}
 @media(max-width:380px){nav{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-book{padding:10px 8px!important}}
 
 .performance-video{margin:0;max-width:1100px}.performance-video video{display:block;width:100%;height:auto;aspect-ratio:910/512;background:#000;border:1px solid #976bce66;border-radius:5px}.performance-video figcaption{padding:18px 0;color:var(--muted);font-size:16px;border-bottom:1px solid var(--line)}
@@ -39,8 +39,7 @@
 
 .schedule-month{max-width:1408px;margin:0 auto 48px}.schedule-month-title{font-size:1.75rem;margin-bottom:22px}.events-section .event{grid-template-columns:85px minmax(0,1fr) 190px 220px}.events-section .event-note{font-size:14px;line-height:1.5}@media(max-width:1000px){.events-section .event{grid-template-columns:70px minmax(0,1fr) 190px}.events-section .event-note{grid-column:2}}@media(max-width:700px){.events-section .event{grid-template-columns:58px minmax(0,1fr)}.events-section h2{font-size:clamp(36px,8vw,52px)}.schedule-month-title{font-size:1.5rem}}
 
-/* Center the four people by trimming the extra background on the right. */
-.photo-gallery .heritage-photo{grid-column:1/-1}.photo-gallery .heritage-photo img{height:auto;aspect-ratio:1.35;object-fit:cover;object-position:left center;transform:none}
+.photo-gallery .heritage-photo{grid-column:1/-1}.photo-gallery .heritage-photo img{height:auto;aspect-ratio:auto;object-fit:contain}
 
 .page-heading.photos-heading{max-width:1100px;margin:80px auto 90px;text-align:center}.photos-heading h1{line-height:1.18;letter-spacing:-1px}.photos-heading .eyebrow{margin-bottom:28px}
 @media(max-width:700px){.page-heading.photos-heading{margin:56px auto 64px}.photos-heading h1{font-size:clamp(40px,8vw,56px);line-height:1.2;letter-spacing:0}}
@@ -49,59 +48,90 @@
 
 .photo-gallery .gallery-portrait img{height:auto;aspect-ratio:auto;object-fit:contain}
 
-/* Song List music icon in the shared navigation. */
-nav .nav-song-list{gap:8px;white-space:nowrap}nav .nav-song-list svg{flex-shrink:0}
+/* Song List navigation and page. */
+nav>a .song-list-icon{flex-shrink:0;margin-right:8px}.song-list-content{max-width:950px}.song-list-empty{color:var(--muted);font-size:1.125rem}#song-list{padding-left:1.5rem;font-size:1.125rem;line-height:1.8}
 
-/* Outline the booking link in the shared navigation. */
-nav .nav-book{border:1px solid #c9a2f5;border-radius:5px;padding:8px 14px}nav .nav-book:hover{border-color:#e0c5ff}
-
-/* Pill-shaped navigation shared by desktop and mobile pages. */
-.header nav>a,.header nav .nav-book{
-  border:1px solid rgba(201,162,245,.65);
-  border-radius:999px;
-  padding:8px 16px;
-  background:transparent;
-  text-decoration:none;
-  white-space:nowrap;
-}
-.header nav>a:hover,.header nav .nav-book:hover{
-  border-color:#e0c5ff;
-  background:rgba(201,162,245,.12);
-  text-decoration:none;
-}
-.header nav>a[aria-current="page"]{
-  background:rgba(201,162,245,.16);
-  border-color:#e0c5ff;
-  text-decoration:none;
-}
-@media(max-width:700px){
-  .header nav,.cinematic-home .header nav{gap:8px}
-  .header nav>a,.header nav .nav-book{padding:8px 14px;min-height:44px}
-}
-
-/* Desktop section links land flush with the viewport; booking fills it. */
-@media (min-width: 701px) and (hover: hover) and (pointer: fine) {
-  html:has(body.cinematic-home #band:target),
-  html:has(body.cinematic-home #booking:target),
-  html:has(body.cinematic-home #events:target) { scroll-padding-top: 0; }
-  .cinematic-home #booking.booking-section {
-    min-height: 100svh;
-    padding-top: clamp(24px, 4svh, 48px);
-    padding-bottom: clamp(24px, 4svh, 48px);
-  }
-}
+/* Restore the concert photograph behind the complete show schedule. */
+.events-section{position:relative;isolation:isolate;background:#100a19;color:#f7f5ef;text-shadow:0 1px 4px #000}
+.events-background{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.events-background::before{content:"";display:block;position:sticky;top:0;height:100vh;height:100svh;background:url("assets/events-background-sax.jpg") center center/cover no-repeat}
+.events-section .eyebrow,.events-section .text-link,.events-section .date span{color:#d2b77e}
+.events-section .event,.events-section .date{border-color:#ffffff35}
+.events-section .venue p,.events-section .event-note,.events-section .schedule-note{color:#eee6f5}
+@media(max-width:700px){.events-background::before{background-position:center top}}
 
 /* Bring the Photos heading and gallery closer to the navigation. */
 .inner-page .section:has(>.photos-heading){padding-top:24px}
 .page-heading.photos-heading{margin:12px auto 36px}
 @media(max-width:700px){.inner-page .section:has(>.photos-heading){padding-top:16px}.page-heading.photos-heading{margin:8px auto 28px}}
 
-/* Purple frames around every performance video on all screen sizes. */
-.performance-video video{border:4px solid #976bce;border-radius:8px;box-shadow:0 0 0 1px #6435a5}
-
-.performance-video .vertical-video-frame{border:4px solid #976bce;border-radius:8px;box-shadow:0 0 0 1px #6435a5}
-
-/* Thicker purple borders sit directly against each video frame. */
-.performance-video video{border:6px solid #976bce;border-radius:6px;box-shadow:none;aspect-ratio:auto}
-.performance-video .vertical-video-frame{border:6px solid #976bce;border-radius:6px;box-shadow:none}
+/* Use the phone Events experience on every screen. */
+.events-section{height:100svh;min-height:0;padding:0;overflow:hidden}
+.events-background{position:absolute;inset:0;overflow:hidden}
+.events-background::before{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(0);backface-visibility:hidden}
+.events-scroll{display:block;position:absolute;inset:0;overflow-x:hidden;overflow-y:auto;padding:48px 6% 40px;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
+.events-scroll>.section-heading{max-width:1408px;margin-left:auto;margin-right:auto}
+.events-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+@media(max-width:700px){.events-background::before{background-size:contain;background-position:center top;background-repeat:no-repeat}}
+.performance-video video{border:6px solid #6435a5;border-radius:6px;box-shadow:none;aspect-ratio:auto}
+.performance-video .vertical-video-frame{border:6px solid #6435a5;border-radius:6px;box-shadow:none}
 .performance-video .vertical-video-frame video{border:0;border-radius:0;box-shadow:none}
+
+.photo-gallery .concert-poster{grid-column:1/-1;width:100%;margin:0}.photo-gallery .concert-poster img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+
+/* Match the video frames, directly against each photo edge. */
+.photo-gallery img{box-sizing:border-box;border:6px solid #6435a5;border-radius:6px}
+
+/* End the first photo frame at the stage edge, above its black bottom strip. */
+.photo-gallery .concert-poster img{box-sizing:content-box;width:calc(100% - 12px);height:auto;aspect-ratio:1375/1123;object-fit:cover;object-position:center top}
+
+/* Purple photo frames, matching the gallery and videos. */
+.hero-photo::before{display:none;border:0}
+.hero-photo img,.member img,.bio-photo{box-sizing:border-box;border:6px solid #6435a5;border-radius:6px}
+
+/* Use the band wordmark over the homepage photo. */
+.home-photo-title{mix-blend-mode:screen}
+.hero-photo .home-photo-title .home-band-logo{display:block;width:clamp(165px,22vw,330px);max-width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border:0;border-radius:0;filter:none;background:#000}
+.home-photo-title span{margin-top:0}
+@media(max-width:700px){.hero-photo .home-photo-title .home-band-logo{width:clamp(165px,44vw,265px)}}
+
+/* Bring the two homepage logo lines closer independently. */
+.hero-photo .home-photo-title .home-band-logo{transform:translateY(clamp(6px,1vw,14px))}
+.home-photo-title span{transform:translateY(-4px)}
+
+/* Match homepage accents to the purple header links. */
+.hero-copy h1 em{color:#6435a5}
+.hero-buttons .primary{background:#6435a5;border-color:#976bce;color:#fff}
+.hero-buttons .primary:hover{background:#7c46c1;border-color:#bb96ef;color:#fff}
+
+/* Match every media frame to the homepage navigation purple. */
+.video-empty{border-color:#6435a5}
+
+/* Purple homepage ribbon with larger lettering. */
+.ribbon{background:#6435a5;border-color:#6435a5;padding:24px 28px;gap:16px 24px;flex-wrap:wrap;font-size:clamp(15px,1.3vw,18px);font-weight:600;letter-spacing:1.6px;color:#fff}
+.ribbon span:first-child{color:#fff}
+@media(max-width:700px){.ribbon{padding:20px 6%;font-size:15px;letter-spacing:1px;gap:14px 20px}}
+
+/* Match the top header name to the band wordmark on the photo. */
+.header .wordmark{mix-blend-mode:screen}
+.header .wordmark .header-band-logo{display:block;width:160px;max-width:100%;height:auto;margin:-6px 0;border:0;border-radius:0;background:#000}
+@media(max-width:700px){.header .wordmark .header-band-logo{width:130px;margin:-5px 0}}
+
+/* Bolder homepage photo frame in the navigation purple. */
+.home-photo-frame{border:10px solid #6435a5;border-radius:8px;overflow:hidden}
+.hero-photo .home-photo-frame>img{border:0;border-radius:0}
+
+/* Match footer branding to the band logo in the header. */
+footer .wordmark{mix-blend-mode:screen}
+footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;height:auto;margin:-6px 0;border:0;border-radius:0;background:#000}
+@media(max-width:700px){footer .wordmark .footer-band-logo{width:130px;margin:-5px 0}}
+
+/* Band Bio title uses the same wordmark and gold subtitle. */
+.bio-brand-heading{display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;mix-blend-mode:screen}
+.bio-band-name{display:inline-flex;flex-direction:column;align-items:center;max-width:100%;letter-spacing:normal}
+.bio-band-name>img{display:block;width:clamp(180px,26vw,350px);max-width:100%;height:auto;border:0;background:#000;margin:-8px 0}
+.bio-band-name>span{font:italic 400 clamp(28px,3vw,42px)/1.2 var(--serif);color:#d2b77e;letter-spacing:1px}
+
+/* Keep phone navigation pills even and their labels on one line. */
+@media(max-width:700px){.header nav>a{white-space:nowrap;font-size:13px;gap:5px;padding:10px 6px;justify-content:center}.header nav .nav-book{padding:10px 4px!important}}
+@media(max-width:360px){.header nav>a{font-size:12px;padding:10px 4px}.header nav>a svg{width:15px;height:15px}}
