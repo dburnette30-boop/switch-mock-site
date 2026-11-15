@@ -135,3 +135,16 @@ footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;heig
 /* Keep phone navigation pills even and their labels on one line. */
 @media(max-width:700px){.header nav>a{white-space:nowrap;font-size:13px;gap:5px;padding:10px 6px;justify-content:center}.header nav .nav-book{padding:10px 4px!important}}
 @media(max-width:360px){.header nav>a{font-size:12px;padding:10px 4px}.header nav>a svg{width:15px;height:15px}}
+
+/* Purple emphasis for the booking heading. */
+#booking .booking-copy h2 em{color:#b784ed}
+
+/* Larger booking invitation across screen sizes. */
+#booking .booking-copy .eyebrow{font-size:clamp(20px,2.2vw,28px);line-height:1.4}
+
+/* Larger booking social links with comfortable touch targets. */
+#booking .social{font-size:clamp(20px,2vw,24px);flex-wrap:wrap;gap:12px 28px}
+#booking .social a{display:inline-flex;align-items:center;min-height:44px}
+
+/* Align the ribbon beneath the portrait with its right edge. */
+@media(min-width:701px){.ribbon{max-width:1484px;margin-left:max(6%,calc((100% - 1600px)/2 + 96px));margin-right:20px}}
