@@ -129,7 +129,7 @@ footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;heig
 /* Band Bio title uses the same wordmark and gold subtitle. */
 .bio-brand-heading{display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;mix-blend-mode:screen}
 .bio-band-name{display:inline-flex;flex-direction:column;align-items:center;max-width:100%;letter-spacing:normal}
-.bio-band-name>img{display:block;width:clamp(180px,26vw,350px);max-width:100%;height:auto;border:0;background:#000;margin:-8px 0}
+.bio-band-name>img{display:block;width:clamp(135px,19.5vw,263px);max-width:100%;height:auto;border:0;background:#000;margin:-8px 0}
 .bio-band-name>span{font:italic 400 clamp(28px,3vw,42px)/1.2 var(--serif);color:#d2b77e;letter-spacing:1px}
 
 /* Keep phone navigation pills even and their labels on one line. */
