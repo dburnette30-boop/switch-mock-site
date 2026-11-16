@@ -2,7 +2,9 @@
 <html lang="en" class="song-list-root">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Song List · SWITCH featuring Ana</title><meta name="description" content="Song list for SWITCH featuring Ana."><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=footer-band-logo-20261115"><style>
 body.song-list-page{position:relative;isolation:isolate;background:#101214}
-.song-list-page::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;background:url("assets/song-list-background-original-logo.jpg") right center/cover no-repeat;pointer-events:none}
+.song-list-page::before{content:none}
+.song-list-background{position:fixed;inset:0;width:100%;height:100%;z-index:0;background:url("assets/song-list-background-original-logo.jpg") right center/cover no-repeat;pointer-events:none}
+.song-list-scroll{position:relative;z-index:1;min-height:100vh;min-height:100svh;background:transparent}
 .song-list-page .header,.song-list-page footer{background:transparent;border:0}
 .song-list-page .page-heading h1{text-shadow:0 2px 18px #000}
 .song-list-page .song-list-content{background:transparent;padding:20px 32px;border:0;border-radius:0}
@@ -29,13 +31,13 @@ body.song-list-page{position:relative;isolation:isolate;background:#101214}
   .song-list-background{position:fixed;top:0;left:0;width:var(--song-background-width,100vw);height:var(--song-background-height,100lvh);z-index:0;background:url("assets/song-list-background-original-logo.jpg") right center/cover no-repeat;pointer-events:none;transform:translateZ(0);backface-visibility:hidden;will-change:transform}
   .song-list-page>.header,.song-list-page>main,.song-list-page>footer{position:relative;z-index:1}
 }
-@media(min-width:701px){.song-list-background{display:none}}
+
 
 /* Keep document bounce away from the photo: only this content layer scrolls. */
 @media(max-width:700px){
   html.song-list-root{height:100%;overflow:hidden;overscroll-behavior:none}
   body.song-list-page{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
-  .song-list-background{position:absolute}
+  .song-list-background{position:absolute;min-width:100%;min-height:100%}
   .song-list-scroll{position:absolute;inset:0;z-index:1;overflow-x:hidden;overflow-y:auto;overscroll-behavior:none;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
   .song-list-scroll:focus{outline:none}
 }
