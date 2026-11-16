@@ -128,9 +128,9 @@ footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;heig
 
 /* Band Bio title uses the same wordmark and gold subtitle. */
 .bio-brand-heading{display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;mix-blend-mode:screen}
-.bio-band-name{display:inline-flex;flex-direction:column;align-items:center;max-width:100%;letter-spacing:normal}
-.bio-band-name>img{display:block;width:clamp(135px,19.5vw,263px);max-width:100%;height:auto;border:0;background:#000;margin:-8px 0}
-.bio-band-name>span{font:italic 400 clamp(28px,3vw,42px)/1.2 var(--serif);color:#d2b77e;letter-spacing:1px}
+.bio-band-name{display:inline-flex;flex-direction:column;align-items:center;max-width:calc(100% - 24px);margin-left:14px;letter-spacing:normal}
+.bio-band-name>img{display:block;width:clamp(120px,17vw,230px);max-width:100%;height:auto;border:0;background:#000;margin:-8px 0}
+.bio-band-name>span{align-self:flex-start;margin-left:0;font:italic 400 clamp(24px,2.6vw,36px)/1.2 var(--serif);color:#d2b77e;letter-spacing:1px}
 
 /* Keep phone navigation pills even and their labels on one line. */
 @media(max-width:700px){.header nav>a{white-space:nowrap;font-size:13px;gap:5px;padding:10px 6px;justify-content:center}.header nav .nav-book{padding:10px 4px!important}}
