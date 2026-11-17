@@ -24,6 +24,55 @@
 .home-photo-title span{display:block;font:italic 400 clamp(24px,2.5vw,38px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:10px}
 @media(max-width:700px){.home-photo-title{font-size:clamp(38px,10vw,76px)}.home-photo-title span{font-size:clamp(24px,6vw,34px)}}
 .home-photo-frame::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}
+</style><style>
+/* Stage lighting carries the concert atmosphere into booking. */
+.booking-section{
+  position:relative;
+  max-width:none;
+  min-height:760px;
+  background:linear-gradient(90deg,rgba(9,8,14,.58),rgba(9,8,14,.18)),url("assets/events-background-sax.jpg") center bottom/cover no-repeat;
+  background-attachment:scroll;
+  color:#f7f5ef;
+}
+.booking-copy{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.booking-copy>p:not(.eyebrow){color:#eee6f5}
+.booking-section form{
+  background:rgba(12,8,20,.76);
+  border:1px solid rgba(210,183,126,.32);
+  padding:32px;
+}
+.booking-section input,.booking-section textarea{background:rgba(9,8,14,.8)}
+.booking-section .form-note{color:#d7cede}
+@media(max-width:700px){
+  .booking-section{min-height:0;background-position:44% bottom;gap:36px}
+  .booking-section form{padding:24px 20px}
+}
+
+/* Show the Events concert photo clearly behind the phone booking introduction. */
+@media(max-width:700px){
+  .booking-section{display:block;padding:0;background:#09080e;min-height:0}
+  .booking-copy{min-height:100svh;padding:48px 6%;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,rgba(9,8,14,.18),rgba(9,8,14,.5)),url("assets/events-background-sax.jpg") center center/cover no-repeat}
+  .booking-section form{margin:32px 6% 48px}
+}
+
+/* Anchor social links at the bottom of the phone booking photo. */
+@media(max-width:700px){
+  .booking-copy{position:relative;padding-bottom:100px}
+  .booking-copy .social{position:absolute;left:6%;right:6%;bottom:28px}
+}
+
+/* Place phone booking contact links at the top and bottom of the photo. */
+@media(max-width:700px){
+  .booking-copy{padding-top:96px;padding-bottom:96px}
+  .booking-copy>p:has(>a[href^="mailto:"]){position:absolute;top:0;left:6%;right:6%;max-width:none;margin:0;padding:12px 0;line-height:1.5}
+  .booking-copy .social{left:6%;right:6%;bottom:0;padding:12px 0}
+}
+
+/* Return Ana's email to the booking text inside the phone photo. */
+@media(max-width:700px){
+  .booking-copy{padding-top:48px}
+  .booking-copy>p:has(>a[href^="mailto:"]){position:static;top:auto;left:auto;right:auto;max-width:390px;margin:28px 0;padding:0}
+}
 </style></head>
 <body id="top">
 <a class="skip" href="#main">Skip to content</a>
