@@ -180,3 +180,33 @@ footer {
     align-items: start;
   }
 }
+
+/* Keep the shared header compact and tie it to the purple navigation. */
+.header {
+  position: relative;
+  min-height: 0;
+  padding-block: 13px;
+  gap: 14px clamp(26px, 4vw, 56px);
+  border-bottom: 0;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  inset: auto 6% 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #976bce 20%, #976bce 80%, transparent);
+  pointer-events: none;
+}
+
+.header:has(> .wordmark),
+.header:has(> .wordmark) nav {
+  justify-content: flex-start;
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding-block: 10px 14px;
+    row-gap: 12px;
+  }
+}
