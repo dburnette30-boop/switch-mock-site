@@ -121,6 +121,9 @@ nav>a .song-list-icon{flex-shrink:0;margin-right:8px}.song-list-content{max-widt
 .home-photo-frame{border:10px solid #6435a5;border-radius:8px;overflow:hidden}
 .hero-photo .home-photo-frame>img{border:0;border-radius:0}
 
+/* Reduce footer vertical spacing by twenty percent. */
+footer{padding-top:30.4px;padding-bottom:30.4px;gap:24px}
+@media(max-width:700px){footer{padding-top:25.6px;padding-bottom:25.6px;gap:20px}}
 /* Match footer branding to the band logo in the header. */
 footer .wordmark{mix-blend-mode:screen}
 footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;height:auto;margin:-6px 0;border:0;border-radius:0;background:#000}
