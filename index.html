@@ -9,16 +9,25 @@
     if (location.hash && location.hash !== '#booking' && !arrivedFromSite) {
       history.replaceState(history.state, '', location.pathname + location.search);
     }
+    function scrollToHomeTop() {
+      const root = document.documentElement;
+      root.classList.add('jump-to-top');
+      window.scrollTo(0, 0);
+      root.classList.remove('jump-to-top');
+    }
+
     function resetHomeScroll() {
-      if (!location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (!location.hash || location.hash === '#top') scrollToHomeTop();
     }
     window.addEventListener('load', resetHomeScroll);
     window.addEventListener('pageshow', resetHomeScroll);
   </script>
   <title>SWITCH featuring Ana · Brevard’s premier dance party band</title>
   <meta name="description" content="SWITCH featuring Ana — Brevard's premier dance party band. Meet the band, explore shows, and plan your next event.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=header-purple-divider">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=footer-tagline">
 <style>
+html.jump-to-top { scroll-behavior: auto; }
+
 /* Keep the purple stage glow behind the homepage copy. */
 .hero-copy {
   isolation: isolate;
@@ -118,6 +127,15 @@
 <section class="section booking-section"><div class="booking-copy"><p class="eyebrow" id="booking">Make it a SWITCH night</p><h2>Your event.<br>Our <em>stage.</em></h2><p>Planning a show or special event? Get in touch with SWITCH featuring Ana.</p><div class="social"><a href="https://www.facebook.com/switchfeaturingana" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/switch.featuring.ana" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
 <form id="booking-form" action="https://formsubmit.co/Ananfriendsent@aol.com" method="POST"><input type="hidden" name="_subject" value="SWITCH featuring Ana — Booking inquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://switchftana.com/"><h3>Booking information</h3><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><label for="message">Tell us about your event</label><textarea id="message" name="message" rows="4" placeholder="Date, venue, and what you have in mind…" required></textarea><button type="submit" class="button primary">Send booking inquiry</button><p class="form-note">Submit your event details directly to Ana’s booking email.</p></form></section>
 </main>
-<footer><a class="wordmark" href="#top"><img class="footer-band-logo" src="assets/switch-mistral-wordmark.png" alt="SWITCH"><span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p></footer>
+<footer><a class="wordmark" href="#" aria-label="SWITCH featuring Ana home"><img class="footer-band-logo" src="assets/switch-mistral-wordmark.png" alt="SWITCH"><span>featuring Ana</span></a><p>Brevard’s premier dance party band.</p></footer>
+<script>
+  document.querySelector('footer .wordmark').addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+    document.querySelector('.header .wordmark').focus({ preventScroll: true });
+    scrollToHomeTop();
+  });
+</script>
 <script src="script.js?v=booking-delivery-20261115"></script>
 <script src="space-coast-events.js?v=20261111"></script></body></html>
