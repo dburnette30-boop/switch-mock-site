@@ -28,6 +28,14 @@
 <style>
 html.jump-to-top { scroll-behavior: auto; }
 
+/* On phones, land on the band intro and the two-column portrait grid. */
+.band-section { position: relative; }
+#band { position: absolute; top: 0; }
+@media (max-width: 700px) {
+  .band-intro { position: relative; }
+  #band { scroll-margin-top: 30px; }
+}
+
 /* Keep the purple stage glow behind the homepage copy. */
 .hero-copy {
   isolation: isolate;
@@ -114,7 +122,7 @@ html.jump-to-top { scroll-behavior: auto; }
   <figure class="hero-photo"><div class="home-photo-frame"><img src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><div class="home-photo-title" aria-hidden="true"><img class="home-band-logo" src="assets/switch-mistral-wordmark.png" alt="" width="1920" height="832"><span>featuring Ana</span></div></div></figure>
 </section>
 <div class="ribbon" aria-label="Band name"><span>SWITCH featuring Ana</span><span>Music that moves you.</span><span>Let’s dance.</span></div>
-<section class="section band-section" id="band"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p>Four artists. One shared rhythm.</p></div>
+<section class="section band-section"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p class="band-intro"><span id="band"></span>Four artists. One shared rhythm.</p></div>
 <div class="band-grid">
   <article class="member"><img src="assets/ana-stage.jpeg" alt="Ana Aguiar" loading="lazy"><div><h3>Ana Aguiar</h3></div></article>
   <article class="member"><img src="assets/gary-stage.jpeg" alt="Gary Kirby" loading="lazy"><div><h3>Gary Kirby</h3></div></article>
