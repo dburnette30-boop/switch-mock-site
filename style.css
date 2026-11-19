@@ -159,18 +159,32 @@ footer .wordmark .footer-band-logo{display:block;width:160px;max-width:100%;heig
   object-fit: contain;
 }
 
-/* A soft violet stage glow behind the footer wordmark. */
+/* Soft violet stage lighting behind the header and footer wordmarks. */
+.header, footer {
+  --wordmark-glow: radial-gradient(
+    ellipse 360px 125px at clamp(90px, 12%, 180px) 32%,
+    #452367 0%, #28163d 42%, transparent 100%
+  );
+}
+
+.header:has(> .wordmark) {
+  background-image: var(--wordmark-glow);
+}
+
 footer {
-  background:
-    radial-gradient(ellipse 360px 125px at clamp(90px, 12%, 180px) 32%, #452367 0%, #28163d 42%, transparent 100%),
-    linear-gradient(180deg, #1a1720, #070609);
+  background: var(--wordmark-glow), linear-gradient(180deg, #1a1720, #070609);
 }
 
 @media (max-width: 700px) {
-  footer {
-    background:
-      radial-gradient(ellipse 250px 105px at 88px 30%, #452367 0%, #28163d 42%, transparent 100%),
-      linear-gradient(180deg, #1a1720, #070609);
+  .header, footer {
+    --wordmark-glow: radial-gradient(
+      ellipse 250px 105px at 88px var(--wordmark-glow-center, 30%),
+      #452367 0%, #28163d 42%, transparent 100%
+    );
+  }
+
+  .header {
+    --wordmark-glow-center: 48px;
   }
 }
 
