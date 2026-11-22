@@ -62,11 +62,19 @@ html:has(#events:target) {
 
 .home-page .events-stage-photo {
   width: auto;
-  height: clamp(250px, 36vw, 480px);
-  max-height: 56svh;
+  height: clamp(320px, 41vw, 550px);
+  max-height: 65svh;
   aspect-ratio: auto;
-  background-position: center 64%;
-  mask-image: linear-gradient(#000 66%, transparent);
+  background: linear-gradient(#0e0a160d, #0e0a1633), var(--stage-photo) center 64% / cover no-repeat;
+  filter: brightness(1.16) saturate(1.1);
+  mask-image: linear-gradient(#000 78%, transparent);
+}
+
+.home-page .events-background::before {
+  filter: blur(4px) brightness(1.1);
+}
+.home-page .events-background::after {
+  background: linear-gradient(to bottom, #0e0a167a, #14101ba3 58%, #17101dd1);
 }
 
 /* Keep the drifting stage fog behind the content above Upcoming Shows. */
