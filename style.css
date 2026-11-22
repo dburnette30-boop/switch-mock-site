@@ -259,3 +259,16 @@ footer {
     row-gap: 12px;
   }
 }
+
+/* Give the booking link its purple pill shape. */
+.header nav > a.nav-book {
+  background-color: #6435a5;
+  border: 1px solid #976bce;
+  border-radius: 999px;
+}
+
+.header nav > a.nav-book:hover {
+  background-color: #7c46c1;
+  border-color: #bb96ef;
+  text-decoration: none;
+}
