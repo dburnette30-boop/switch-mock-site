@@ -39,19 +39,20 @@ html.jump-to-top { scroll-behavior: auto; }
 /* Fade the stage mist into the rest of the homepage. */
 .home-page {
   background-image:
-    linear-gradient(180deg, #10121438 0%, #10121420 55%, var(--bg) 100%),
+    linear-gradient(180deg, #10121420 0%, transparent 62%, var(--bg) 100%),
+    radial-gradient(ellipse at 22% 53%, #7647a82b, transparent 66%),
     url("assets/home-stage-mist.webp");
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: 100% clamp(760px, 66vw, 1150px), auto clamp(760px, 66vw, 1150px);
+  background-size: 100% clamp(760px, 66vw, 1150px), 100% clamp(760px, 66vw, 1150px), auto clamp(760px, 66vw, 1150px);
 }
 .home-page .hero-copy {
   text-shadow: 0 2px 14px #09080ecc;
 }
 @media (max-width: 700px) {
   .home-page {
-    background-position: center top, left top;
-    background-size: 100% 920px, auto 920px;
+    background-position: center top, center top, left top;
+    background-size: 100% 920px, 100% 920px, auto 920px;
   }
 }
 .hero-copy h1 em {
