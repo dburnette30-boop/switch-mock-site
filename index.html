@@ -82,8 +82,8 @@ html:has(#events:target) {
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 0% 31%, #22163a, transparent 60%),
-    radial-gradient(ellipse at 100% 72%, #151c39, transparent 60%);
+    radial-gradient(ellipse at 0% 31%, #242732, transparent 60%),
+    radial-gradient(ellipse at 100% 72%, #202731, transparent 60%);
   mask-image: linear-gradient(#000 91%, transparent);
 }
 .home-mist::before,
@@ -97,13 +97,14 @@ html:has(#events:target) {
 }
 .home-mist::before {
   opacity: .83;
-  animation: stage-mist-drift 26s ease-in-out infinite;
+  filter: grayscale(.9) brightness(1.15);
+  animation: stage-mist-drift 22s ease-in-out infinite;
 }
 .home-mist::after {
   background-position: 38% 320px;
   opacity: .54;
-  filter: hue-rotate(16deg) saturate(.78) brightness(1.25);
-  animation: stage-mist-drift 37s ease-in-out -14s infinite reverse;
+  filter: grayscale(1) brightness(1.35);
+  animation: stage-mist-drift 31s ease-in-out -12s infinite reverse;
 }
 @keyframes stage-mist-drift {
   0%, 100% { transform: translate3d(-5%, 20px, 0) scale(1.035); }
