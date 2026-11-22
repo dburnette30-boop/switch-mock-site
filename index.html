@@ -153,7 +153,13 @@ html:has(#events:target) {
 .home-photo-title{position:absolute;left:6%;bottom:2%;z-index:1;margin:0;font:700 clamp(38px,4.5vw,76px)/.95 var(--sans);letter-spacing:4px;color:#f7f5ef;text-shadow:0 2px 14px #000;pointer-events:none}
 .home-photo-title span{display:block;font:italic 400 clamp(24px,2.5vw,38px)/1.3 var(--serif);letter-spacing:1px;color:#d2b77e;margin-top:10px}
 @media(max-width:700px){.home-photo-title{font-size:clamp(38px,10vw,76px)}.home-photo-title span{font-size:clamp(24px,6vw,34px)}}
-.home-photo-frame::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(9,8,14,.65));pointer-events:none}
+.home-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 60% 0 0;
+  background: linear-gradient(transparent, rgba(9, 8, 14, .27));
+  pointer-events: none;
+}
 </style><style>
 /* Stage lighting carries the concert atmosphere into booking. */
 .booking-section{
