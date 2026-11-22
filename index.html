@@ -124,18 +124,21 @@ html:has(#events:target) {
 .home-page .hero-copy {
   text-shadow: 0 2px 14px #09080ecc;
 }
-.hero-copy h1 em {
-  color: #a875e2;
+.hero-copy h1 {
+  font-size: clamp(60px, 8vw, 112px);
 }
-
-/* Let the homepage haze show through the bar between the stage beams. */
-.home-page .ribbon {
-  background:
-    conic-gradient(from 125deg at 16% -55%, transparent 5deg, #86c9ff52 25deg, transparent 58deg),
-    conic-gradient(from 301deg at 84% 170%, transparent 4deg, #e4a8ff63 35deg, transparent 63deg),
-    linear-gradient(105deg, #6435a59c, #4b257899 52%, #6435a5a6);
-  border-color: #b286e356;
-  text-shadow: 0 1px 5px #180a2a, 0 2px 12px #180a2a;
+.hero-copy h1 span {
+  display: block;
+  margin-top: 5px;
+  color: #d2b77e;
+  font-size: clamp(30px, 4vw, 54px);
+  font-style: italic;
+  letter-spacing: normal;
+}
+.hero-tagline {
+  margin: 20px 0 0;
+  color: #a875e2;
+  font: italic 400 clamp(27px, 3.3vw, 46px)/1.1 var(--serif);
 }
 
 .home-photo-frame{position:relative}
@@ -201,10 +204,9 @@ html:has(#events:target) {
 <main id="main">
 <div class="home-intro">
 <section class="hero">
-  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1>A night <br>to <em>remember.</em></h1><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
+  <div class="hero-copy"><p class="eyebrow">Live music · Brevard County, Florida</p><h1>SWITCH <span>featuring Ana</span></h1><p class="hero-tagline">Music that moves you</p><p class="intro">Brevard’s premier dance party band.</p><p class="hero-description">SWITCH featuring Ana brings the party to the stage—and the energy to the dance floor.</p><div class="hero-buttons"><a class="button primary" href="#events">Find a show</a><a class="button secondary" href="#booking">Book the band</a></div></div>
   <figure class="hero-photo"><div class="home-photo-frame"><img src="assets/switch-band-portrait.jpg" alt="SWITCH featuring Ana band portrait with colorful stage lighting"><div class="home-photo-title" aria-hidden="true"><img class="home-band-logo" src="assets/switch-mistral-wordmark.png" alt="" width="1920" height="832"><span>featuring Ana</span></div></div></figure>
 </section>
-<div class="ribbon" aria-label="Band name"><span>SWITCH featuring Ana</span><span>Music that moves you.</span><span>Let’s dance.</span></div>
 <section class="section band-section"><div class="section-heading"><div><p class="eyebrow">The people behind the party</p><h2>Meet the band.</h2></div><p class="band-intro"><span id="band"></span>Four artists. One shared rhythm.</p></div>
 <div class="band-grid">
   <article class="member"><img src="assets/ana-stage.jpeg" alt="Ana Aguiar" loading="lazy"><div><h3>Ana Aguiar</h3></div></article>
