@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="assets/home-stage-mist.webp" as="image" type="image/webp">
   <script>
     // Fresh visits open at the top; section links within the site still work.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -106,7 +107,8 @@ html:has(#events:target) {
 .home-mist::before {
   opacity: .83;
   filter: saturate(1.6) brightness(1.12);
-  animation: stage-mist-drift 22s ease-in-out infinite;
+  /* Start mid-drift so the mist is moving on the first frame. */
+  animation: stage-mist-drift 22s ease-in-out -5.5s infinite;
 }
 .home-mist::after {
   background-position: 38% 320px;
