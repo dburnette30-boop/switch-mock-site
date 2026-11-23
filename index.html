@@ -101,7 +101,7 @@ html:has(#events:target) {
   content: "";
   position: absolute;
   inset: -48px -10%;
-  background: url("assets/home-stage-mist.webp") center top / max(100%, 950px) auto repeat-y;
+  background: url("assets/home-stage-mist.webp") center top / max(100%, 950px) 100% no-repeat;
   mix-blend-mode: screen;
   will-change: transform;
 }
@@ -110,8 +110,7 @@ html:has(#events:target) {
     radial-gradient(ellipse at 18% 17%, #f4ae5366 0%, #d1833738 14%, transparent 33%),
     url("assets/home-stage-mist.webp");
   background-position: center, center top;
-  background-size: 100% 100%, max(100%, 950px) auto;
-  background-repeat: no-repeat, repeat-y;
+  background-size: 100% 100%, max(100%, 950px) 100%;
   background-blend-mode: color;
   opacity: .83;
   filter: saturate(1.6) brightness(1.12);
@@ -119,7 +118,8 @@ html:has(#events:target) {
   animation: stage-mist-drift 22s ease-in-out -5.5s infinite;
 }
 .home-mist::after {
-  background-position: 38% 320px;
+  background-position: 38% top;
+  mask-image: linear-gradient(transparent, #000 24%);
   opacity: .54;
   filter: saturate(1.8) brightness(1.2);
   animation: stage-mist-drift 31s ease-in-out -12s infinite reverse;
@@ -130,7 +130,7 @@ html:has(#events:target) {
 }
 @media (max-width: 700px) {
   .home-mist::before { background-position: center, left top; }
-  .home-mist::after { background-position: right 310px; }
+  .home-mist::after { background-position: right top; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-mist::before,
